@@ -1,0 +1,27 @@
+{
+  "ttbId": "24022001000305",
+  "status": "PENDING REVIEW",
+  "vendorCode": "52505",
+  "serialNumber": "24CHD1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "81",
+  "classTypeDesc": "TABLE WHITE WINE",
+  "originCode": "07",
+  "originDesc": "WASHINGTON",
+  "brandName": "CHIMES VINEYARD",
+  "dbaName": "",
+  "fancifulName": "CHARDONNAY",
+  "alcoholContent": "12.5% BY VOLUME",
+  "netContents": "750 ML",
+  "plantRegistry": "BWC-WA-1005",
+  "permitNumber": "BP-WA-1005",
+  "applicantName": "CHIMES VINEYARD",
+  "applicantAddress": "WASHINGTON",
+  "qualifications": "CONTAINS SULFITES",
+  "labelImages": {
+    "front": "wine_chimes-vineyard_chardonnay_front.png",
+    "back": "wine_chimes-vineyard_chardonnay_back.png"
+  },
+  "grapeVarietal": "CHARD",
+  "wineAppellation": "01/10/2026"
+}

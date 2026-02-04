@@ -1,0 +1,26 @@
+{
+  "ttbId": "24001001000101",
+  "status": "PENDING REVIEW",
+  "vendorCode": "48201",
+  "serialNumber": "24RUM1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "439",
+  "classTypeDesc": "RUM OTHER FLAVORED",
+  "originCode": "4H",
+  "originDesc": "BARBADOS",
+  "brandName": "12345 IMPORTS",
+  "dbaName": "",
+  "fancifulName": "RUM WITH COCONUT LIQUEUR",
+  "alcoholContent": "21% ALC./VOL.",
+  "netContents": "200 ML",
+  "plantRegistry": "IR-FL-1201",
+  "permitNumber": "IP-FL-1201",
+  "applicantName": "12345 IMPORTS",
+  "applicantAddress": "MIAMI, FL",
+  "qualifications": "IMPORTED",
+  "labelImages": {
+    "front": "spirits_12345imports_rum-coconut_front.png",
+    "back": "spirits_12345imports_rum-coconut_back.png"
+  },
+  "wineVintage": "12/01/2025"
+}

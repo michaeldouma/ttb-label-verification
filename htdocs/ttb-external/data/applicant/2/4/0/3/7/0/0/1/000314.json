@@ -1,0 +1,26 @@
+{
+  "ttbId": "24037001000314",
+  "status": "PENDING REVIEW",
+  "vendorCode": "84101",
+  "serialNumber": "24MAR1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "84",
+  "classTypeDesc": "VERMOUTH",
+  "originCode": "50",
+  "originDesc": "ITALY",
+  "brandName": "MARTINI & ROSSI",
+  "dbaName": "MARTINI & ROSSI S.p.A.",
+  "fancifulName": "EXTRA DRY VERMOUTH",
+  "alcoholContent": "18% alc./vol.",
+  "netContents": "750ml",
+  "plantRegistry": "IR-FL-701",
+  "permitNumber": "IP-FL-701",
+  "applicantName": "MARTINI & ROSSI WINE COMPANY",
+  "applicantAddress": "CORAL GABLES, FL",
+  "qualifications": "PRODUCT OF ITALY. CONTAINS SULFITES. Produced by Martini & Rossi S.p.A., Pessione (Torino) Italy",
+  "labelImages": {
+    "front": "home_martini-rossi_vermouth_front.png",
+    "back": "home_martini-rossi_vermouth_back.png"
+  },
+  "wineVintage": "01/25/2026"
+}

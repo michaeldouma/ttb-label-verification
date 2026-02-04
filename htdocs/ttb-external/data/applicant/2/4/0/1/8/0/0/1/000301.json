@@ -1,0 +1,27 @@
+{
+  "ttbId": "24018001000301",
+  "status": "PENDING REVIEW",
+  "vendorCode": "10011",
+  "serialNumber": "24RED1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "80",
+  "classTypeDesc": "TABLE RED WINE",
+  "originCode": "00",
+  "originDesc": "AMERICAN",
+  "brandName": "ABC WINES",
+  "dbaName": "XYZ CELLARS",
+  "fancifulName": "AMERICAN RED WINE",
+  "alcoholContent": "ALC. 14% BY VOL.",
+  "netContents": "750 ML",
+  "plantRegistry": "BWC-XX-1001",
+  "permitNumber": "BP-XX-1001",
+  "applicantName": "XYZ CELLARS",
+  "applicantAddress": "CITY, STATE (SAMPLE)",
+  "qualifications": "BLEND OF 50% MERLOT AND 50% CABERNET SAUVIGNON. CONTAINS SULFITES",
+  "labelImages": {
+    "front": "wine_abc-winery_red-wine_front.png",
+    "back": "wine_abc-winery_red-wine_back.png"
+  },
+  "grapeVarietal": "50% MERLOT, 50% CABERNET SAUVIGNON",
+  "wineAppellation": "12/12/2025"
+}

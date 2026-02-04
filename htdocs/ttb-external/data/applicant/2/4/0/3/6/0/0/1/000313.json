@@ -1,0 +1,29 @@
+{
+  "ttbId": "24036001000313",
+  "status": "PENDING REVIEW",
+  "vendorCode": "68101",
+  "serialNumber": "24GAT1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "81",
+  "classTypeDesc": "TABLE WHITE WINE",
+  "originCode": "70",
+  "originDesc": "CHILE",
+  "brandName": "GATO NEGRO",
+  "dbaName": "VIÑA SAN PEDRO S.A.",
+  "fancifulName": "SAUVIGNON BLANC",
+  "alcoholContent": "ALC. 12% BY VOL.",
+  "netContents": "750 ML",
+  "plantRegistry": "IR-FL-601",
+  "permitNumber": "IP-FL-601",
+  "applicantName": "SHAW-ROSS INTERNATIONAL IMPORTERS",
+  "applicantAddress": "MIRAMAR, FL",
+  "qualifications": "WINE OF CHILE. CONTAINS SULFITES. Wine produced and bottled by Viña San Pedro S.A., Molina-Chile",
+  "labelImages": {
+    "front": "home_gato-negro_sauvignon-blanc_front.png",
+    "back": "home_gato-negro_sauvignon-blanc_back.png"
+  },
+  "wineVintage": "2020",
+  "grapeVarietal": "SAUV BLANC",
+  "wineAppellation": "CHILE",
+  "ageStatement": "01/09/2026"
+}

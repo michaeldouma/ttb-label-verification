@@ -1,0 +1,26 @@
+{
+  "ttbId": "24014001000209",
+  "status": "PENDING REVIEW",
+  "vendorCode": "45600",
+  "serialNumber": "24NAB1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "907",
+  "classTypeDesc": "CEREAL BEVERAGES - NEAR BEER (NON ALCOHOLIC)",
+  "originCode": "05",
+  "originDesc": "VIRGINIA",
+  "brandName": "EXAMPLE BREWING CO.",
+  "dbaName": "",
+  "fancifulName": "NON-ALCOHOLIC MALT BEVERAGE",
+  "alcoholContent": "CONTAINS LESS THAN 0.5% ALCOHOL BY VOLUME",
+  "netContents": "1 PINT",
+  "plantRegistry": "BR-VA-600",
+  "permitNumber": "BP-VA-600",
+  "applicantName": "EXAMPLE BREWING CO.",
+  "applicantAddress": "ARLINGTON, VIRGINIA",
+  "qualifications": "NON-TAXABLE UNDER SECTION 5051 I.R.C.",
+  "labelImages": {
+    "front": "malt_example-brewing_non-alcoholic_front.png",
+    "back": "malt_example-brewing_non-alcoholic_back.png"
+  },
+  "wineVintage": "12/10/2025"
+}

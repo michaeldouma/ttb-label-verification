@@ -1,0 +1,28 @@
+{
+  "ttbId": "24026001000309",
+  "status": "PENDING REVIEW",
+  "vendorCode": "29109",
+  "serialNumber": "24NIA1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "80",
+  "classTypeDesc": "TABLE RED WINE",
+  "originCode": "69",
+  "originDesc": "CANADA",
+  "brandName": "TTB IMPORTS",
+  "dbaName": "",
+  "fancifulName": "NIAGARA PENINSULA RED WINE",
+  "alcoholContent": "ALC. 13.5% BY VOL.",
+  "netContents": "750 ML",
+  "plantRegistry": "IR-NY-1009",
+  "permitNumber": "IP-NY-1009",
+  "applicantName": "TTB IMPORTS",
+  "applicantAddress": "BUFFALO, NY",
+  "qualifications": "PRODUCT OF CANADA. CONTAINS SULFITES",
+  "labelImages": {
+    "front": "wine_ttb-imports_niagara-red_front.png",
+    "back": "wine_ttb-imports_niagara-red_back.png"
+  },
+  "wineVintage": "2012",
+  "wineAppellation": "NIAGARA PENINSULA",
+  "ageStatement": "01/26/2026"
+}

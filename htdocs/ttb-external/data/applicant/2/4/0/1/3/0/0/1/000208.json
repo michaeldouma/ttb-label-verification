@@ -1,0 +1,26 @@
+{
+  "ttbId": "24013001000208",
+  "status": "PENDING REVIEW",
+  "vendorCode": "31700",
+  "serialNumber": "24DRK1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "902",
+  "classTypeDesc": "ALE",
+  "originCode": "25",
+  "originDesc": "MARYLAND",
+  "brandName": "MALT & HOP BREWING CO.",
+  "dbaName": "",
+  "fancifulName": "DARK ALE",
+  "alcoholContent": "10% ALCOHOL/VOLUME",
+  "netContents": "12 FL OZ",
+  "plantRegistry": "BR-MD-700",
+  "permitNumber": "BP-MD-700",
+  "applicantName": "MALT & HOP BREWING CO.",
+  "applicantAddress": "HYATTSVILLE, MARYLAND",
+  "qualifications": "ALCOHOL FACTS PANEL SHOWN",
+  "labelImages": {
+    "front": "malt_malt-and-hop_dark-ale_front.png",
+    "back": "malt_malt-and-hop_dark-ale_back.png"
+  },
+  "wineVintage": "01/29/2026"
+}

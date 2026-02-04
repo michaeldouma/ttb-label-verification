@@ -1,0 +1,26 @@
+{
+  "ttbId": "24039001000215",
+  "status": "PENDING REVIEW",
+  "vendorCode": "90201",
+  "serialNumber": "24BOD1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "902",
+  "classTypeDesc": "ALE",
+  "originCode": "92",
+  "originDesc": "UNITED KINGDOM",
+  "brandName": "BODDINGTONS",
+  "dbaName": "",
+  "fancifulName": "PUB ALE",
+  "alcoholContent": "5.0% ALC./VOL.",
+  "netContents": "1 PINT",
+  "plantRegistry": "IR-NY-901",
+  "permitNumber": "IP-NY-901",
+  "applicantName": "ANHEUSER-BUSCH INBEV",
+  "applicantAddress": "NEW YORK, NY",
+  "qualifications": "IMPORTED FROM BRITAIN",
+  "labelImages": {
+    "front": "home_boddingtons_pub-ale_front.png",
+    "back": "home_boddingtons_pub-ale_back.png"
+  },
+  "wineVintage": "02/01/2026"
+}

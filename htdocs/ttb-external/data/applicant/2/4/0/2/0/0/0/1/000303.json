@@ -1,0 +1,26 @@
+{
+  "ttbId": "24020001000303",
+  "status": "PENDING REVIEW",
+  "vendorCode": "14003",
+  "serialNumber": "24MAR1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "82",
+  "classTypeDesc": "TABLE FLAVORED WINE",
+  "originCode": "01",
+  "originDesc": "CALIFORNIA",
+  "brandName": "BIG BLACK CAT",
+  "dbaName": "BIG BLACK CAT BEVERAGES",
+  "fancifulName": "MARGARITA",
+  "alcoholContent": "10% ALC/VOL",
+  "netContents": "750 ML",
+  "plantRegistry": "BWC-XX-1003",
+  "permitNumber": "BP-XX-1003",
+  "applicantName": "BIG BLACK CAT BEVERAGES",
+  "applicantAddress": "-",
+  "qualifications": "MADE WITH TEQUILA, NATURAL FLAVORS AND ARTIFICIAL COLORS",
+  "labelImages": {
+    "front": "wine_big-black-cat_margarita_front.png",
+    "back": "wine_big-black-cat_margarita_back.png"
+  },
+  "wineVintage": "12/20/2025"
+}

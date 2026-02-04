@@ -1,0 +1,26 @@
+{
+  "ttbId": "24002001000102",
+  "status": "PENDING REVIEW",
+  "vendorCode": "31302",
+  "serialNumber": "24RYE1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "102",
+  "classTypeDesc": "STRAIGHT RYE WHISKY",
+  "originCode": "25",
+  "originDesc": "MARYLAND",
+  "brandName": "A.B.C.",
+  "dbaName": "ABC DISTILLERY",
+  "fancifulName": "SINGLE BARREL STRAIGHT RYE WHISKY",
+  "alcoholContent": "45% ALC./VOL.",
+  "netContents": "750 ML",
+  "plantRegistry": "DSP-MD-302",
+  "permitNumber": "DSP-MD-302",
+  "applicantName": "ABC DISTILLERY",
+  "applicantAddress": "FREDERICK, MD",
+  "qualifications": "SINGLE BARREL. DISTILLED AND BOTTLED BY ABC DISTILLERY, FREDERICK, MD",
+  "labelImages": {
+    "front": "spirits_abc-distillery_rye-whisky_front.png",
+    "back": "spirits_abc-distillery_rye-whisky_back.png"
+  },
+  "wineVintage": "12/17/2025"
+}

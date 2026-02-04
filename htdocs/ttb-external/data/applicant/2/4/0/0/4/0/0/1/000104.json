@@ -1,0 +1,26 @@
+{
+  "ttbId": "24004001000104",
+  "status": "PENDING REVIEW",
+  "vendorCode": "18501",
+  "serialNumber": "24VOD1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "339",
+  "classTypeDesc": "VODKA - OTHER FLAVORED",
+  "originCode": "18",
+  "originDesc": "IDAHO",
+  "brandName": "SUNNYSIDE DISTILLERY",
+  "dbaName": "",
+  "fancifulName": "APPLE VODKA",
+  "alcoholContent": "40% ALC./VOL. (80 PROOF)",
+  "netContents": "750 ML",
+  "plantRegistry": "DSP-XX-501",
+  "permitNumber": "DSP-XX-501",
+  "applicantName": "SUNNYSIDE DISTILLERY",
+  "applicantAddress": "-",
+  "qualifications": "VODKA WITH NATURAL APPLE FLAVOR",
+  "labelImages": {
+    "front": "spirits_sunnyside_apple-vodka_front.png",
+    "back": "spirits_sunnyside_apple-vodka_back.png"
+  },
+  "wineVintage": "12/16/2025"
+}

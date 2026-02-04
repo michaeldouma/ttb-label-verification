@@ -1,0 +1,25 @@
+{
+  "ttbId": "24025001000308",
+  "status": "PENDING REVIEW",
+  "vendorCode": "38108",
+  "serialNumber": "24ORR1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "80",
+  "classTypeDesc": "TABLE RED WINE",
+  "originCode": "38",
+  "originDesc": "OREGON",
+  "brandName": "SPARE YOU WINES",
+  "dbaName": "",
+  "fancifulName": "OREGON RED WINE",
+  "alcoholContent": "11.5% ALC BY VOL",
+  "netContents": "750 ML",
+  "plantRegistry": "BWC-OR-1008",
+  "permitNumber": "BP-OR-1008",
+  "applicantName": "SPARE YOU WINES",
+  "applicantAddress": "PAISLEY, OR",
+  "qualifications": "CONTAINS SULFITES",
+  "labelImages": {
+    "front": "wine_spare-you_oregon-red_front.png",
+    "back": "wine_spare-you_oregon-red_back.png"
+  }
+}

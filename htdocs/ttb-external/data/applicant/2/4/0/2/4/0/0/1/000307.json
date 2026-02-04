@@ -1,0 +1,26 @@
+{
+  "ttbId": "24024001000307",
+  "status": "PENDING REVIEW",
+  "vendorCode": "52507",
+  "serialNumber": "24TWW1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "81",
+  "classTypeDesc": "TABLE WHITE WINE",
+  "originCode": "07",
+  "originDesc": "WASHINGTON",
+  "brandName": "LOST WINES",
+  "dbaName": "",
+  "fancifulName": "",
+  "alcoholContent": "",
+  "netContents": "750 ML",
+  "plantRegistry": "BWC-WA-1007",
+  "permitNumber": "BP-WA-1007",
+  "applicantName": "LOST WINES",
+  "applicantAddress": "YAKIMA, WA",
+  "qualifications": "CONTAINS SULFITES",
+  "labelImages": {
+    "front": "wine_lost-wines_white-wine_front.png",
+    "back": "wine_lost-wines_back.png"
+  },
+  "wineAppellation": "WASHINGTON"
+}

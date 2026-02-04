@@ -1,0 +1,29 @@
+{
+  "ttbId": "24021001000304",
+  "status": "PENDING REVIEW",
+  "vendorCode": "45104",
+  "serialNumber": "24ALB1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "81",
+  "classTypeDesc": "TABLE WHITE WINE",
+  "originCode": "05",
+  "originDesc": "VIRGINIA",
+  "brandName": "WINE FOR A RAINY DAY",
+  "dbaName": "RAINY DAY WINES",
+  "fancifulName": "ALBARINO",
+  "alcoholContent": "13% ALC. BY VOL.",
+  "netContents": "750 ML",
+  "plantRegistry": "BWC-VA-1004",
+  "permitNumber": "BP-VA-1004",
+  "applicantName": "RAINY DAY WINES",
+  "applicantAddress": "VIRGINIA",
+  "qualifications": "CONTAINS SULFITES",
+  "labelImages": {
+    "front": "wine_rainy-day_albarino_front.png",
+    "back": "wine_rainy-day_albarino_back.png"
+  },
+  "wineVintage": "2015",
+  "grapeVarietal": "ALBARINO",
+  "wineAppellation": "VIRGINIA",
+  "ageStatement": "12/17/2025"
+}

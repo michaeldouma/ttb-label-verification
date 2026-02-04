@@ -1,0 +1,26 @@
+{
+  "ttbId": "24038001000214",
+  "status": "PENDING REVIEW",
+  "vendorCode": "90101",
+  "serialNumber": "24SCH1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "901",
+  "classTypeDesc": "BEER",
+  "originCode": "53",
+  "originDesc": "GERMANY",
+  "brandName": "SCHÖFFERHOFER",
+  "dbaName": "SCHÖFFERHOFER WEIZENBIER",
+  "fancifulName": "HEFEWEIZEN BIER GRAPEFRUIT",
+  "alcoholContent": "3.0% ALC. BY VOL.",
+  "netContents": "1 PINT 9 FL OZ",
+  "plantRegistry": "IR-CT-801",
+  "permitNumber": "IP-CT-801",
+  "applicantName": "RADEBERGER GRUPPE",
+  "applicantAddress": "NORWALK, CT",
+  "qualifications": "Beer with natural Grapefruit flavor. Brewed and canned in Germany",
+  "labelImages": {
+    "front": "home_schofferhofer_grapefruit_front.png",
+    "back": "home_schofferhofer_grapefruit_back.png"
+  },
+  "wineVintage": "12/06/2025"
+}

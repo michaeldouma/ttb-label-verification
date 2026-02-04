@@ -1,0 +1,26 @@
+{
+  "ttbId": "24015001000210",
+  "status": "PENDING REVIEW",
+  "vendorCode": "31700",
+  "serialNumber": "24BRW1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "902",
+  "classTypeDesc": "ALE",
+  "originCode": "25",
+  "originDesc": "MARYLAND",
+  "brandName": "MALT & HOP BREWERY",
+  "dbaName": "",
+  "fancifulName": "TIGER'S SPECIAL BARLEYWINE ALE",
+  "alcoholContent": "",
+  "netContents": "12 FLUID OUNCES",
+  "plantRegistry": "BR-MD-700",
+  "permitNumber": "BP-MD-700",
+  "applicantName": "MALT & HOP BREWERY",
+  "applicantAddress": "HYATTSVILLE, MD",
+  "qualifications": "CRAFTED TO REMOVE GLUTEN. PRODUCT FERMENTED FROM GRAINS CONTAINING GLUTEN AND CRAFTED TO REMOVE GLUTEN. THE GLUTEN CONTENT OF THIS PRODUCT CANNOT BE VERIFIED, AND THIS PRODUCT MAY CONTAIN GLUTEN",
+  "labelImages": {
+    "front": "malt_malt-and-hop_barleywine-ale_front.png",
+    "back": "malt_malt-and-hop_barleywine-ale_back.png"
+  },
+  "wineVintage": "12/29/2025"
+}

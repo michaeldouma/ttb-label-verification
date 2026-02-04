@@ -1,0 +1,26 @@
+{
+  "ttbId": "24032001000109",
+  "status": "PENDING REVIEW",
+  "vendorCode": "47301",
+  "serialNumber": "24LUK1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "331",
+  "classTypeDesc": "VODKA",
+  "originCode": "99",
+  "originDesc": "POLAND",
+  "brandName": "LUKSUSOWA",
+  "dbaName": "V&S LUKSUSOWA ZIELONA GÓRA S.A.",
+  "fancifulName": "TRIPLE DISTILLED POTATO VODKA",
+  "alcoholContent": "40% alc./vol. (80 PROOF)",
+  "netContents": "1 Liter",
+  "plantRegistry": "IR-NJ-301",
+  "permitNumber": "IP-NJ-301",
+  "applicantName": "ADAMBA IMPORTS INTERNATIONAL, INC.",
+  "applicantAddress": "BROOKLYN, NY",
+  "qualifications": "100% NEUTRAL POTATO SPIRITS. BOTTLED IN POLAND. Produced and bottled in Poland by V&S Luksusowa Zielona Góra S.A",
+  "labelImages": {
+    "front": "home_luksusowa_potato-vodka_front.png",
+    "back": "home_luksusowa_potato-vodka_back.png"
+  },
+  "wineVintage": "12/25/2025"
+}

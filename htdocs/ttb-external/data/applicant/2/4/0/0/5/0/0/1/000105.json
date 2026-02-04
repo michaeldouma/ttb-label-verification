@@ -1,0 +1,26 @@
+{
+  "ttbId": "24005001000105",
+  "status": "PENDING REVIEW",
+  "vendorCode": "29502",
+  "serialNumber": "24GIN1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "200",
+  "classTypeDesc": "DISTILLED GIN",
+  "originCode": "02",
+  "originDesc": "NEW YORK",
+  "brandName": "CHIMES DISTILLERY",
+  "dbaName": "",
+  "fancifulName": "GIN",
+  "alcoholContent": "40% BY VOLUME",
+  "netContents": "750 ML",
+  "plantRegistry": "DSP-XX-502",
+  "permitNumber": "DSP-XX-502",
+  "applicantName": "CHIMES DISTILLERY",
+  "applicantAddress": "-",
+  "qualifications": "",
+  "labelImages": {
+    "front": "spirits_chimes-distillery_gin_front.png",
+    "back": "spirits_chimes-distillery_gin_back.png"
+  },
+  "wineVintage": "12/11/2025"
+}

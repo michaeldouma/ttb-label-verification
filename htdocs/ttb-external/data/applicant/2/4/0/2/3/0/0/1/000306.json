@@ -1,0 +1,27 @@
+{
+  "ttbId": "24023001000306",
+  "status": "PENDING REVIEW",
+  "vendorCode": "11006",
+  "serialNumber": "24MER1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "80",
+  "classTypeDesc": "TABLE RED WINE",
+  "originCode": "01",
+  "originDesc": "CALIFORNIA",
+  "brandName": "PAPAS WINERY",
+  "dbaName": "",
+  "fancifulName": "TABLE WINE (50% MERLOT / 50% SHIRAZ)",
+  "alcoholContent": "",
+  "netContents": "750 ML",
+  "plantRegistry": "BWC-CA-1006",
+  "permitNumber": "BP-CA-1006",
+  "applicantName": "PAPAS WINERY",
+  "applicantAddress": "NAPA, CA",
+  "qualifications": "50% MERLOT, 50% SHIRAZ. 60% NAPA COUNTY, 40% SONOMA COUNTY",
+  "labelImages": {
+    "front": "wine_papas-winery_merlot-shiraz_front.png",
+    "back": "wine_papas-winery_merlot-shiraz_back.png"
+  },
+  "grapeVarietal": "50% MERLOT, 50% SHIRAZ",
+  "wineAppellation": "60% NAPA COUNTY, 40% SONOMA COUNTY"
+}

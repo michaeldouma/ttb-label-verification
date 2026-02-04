@@ -1,0 +1,26 @@
+{
+  "ttbId": "24007001000202",
+  "status": "PENDING REVIEW",
+  "vendorCode": "45600",
+  "serialNumber": "24WHT1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "901",
+  "classTypeDesc": "BEER",
+  "originCode": "05",
+  "originDesc": "VIRGINIA",
+  "brandName": "EXAMPLE BREWING CO.",
+  "dbaName": "",
+  "fancifulName": "WHEAT BEER",
+  "alcoholContent": "4% ALC./VOL.",
+  "netContents": "1 PINT",
+  "plantRegistry": "BR-VA-600",
+  "permitNumber": "BP-VA-600",
+  "applicantName": "EXAMPLE BREWING CO.",
+  "applicantAddress": "ARLINGTON, VA AND UNDER SPECIAL AGREEMENT BALTIMORE, MD",
+  "qualifications": "BREWED AND BOTTLED BY EXAMPLE BREWING CO",
+  "labelImages": {
+    "front": "malt_example-brewing_wheat-beer_front.png",
+    "back": "malt_example-brewing_wheat-beer_back.png"
+  },
+  "wineVintage": "12/02/2025"
+}

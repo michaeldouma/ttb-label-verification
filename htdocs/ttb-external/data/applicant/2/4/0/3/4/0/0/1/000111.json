@@ -1,0 +1,26 @@
+{
+  "ttbId": "24034001000111",
+  "status": "PENDING REVIEW",
+  "vendorCode": "41001",
+  "serialNumber": "24CAL1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "410",
+  "classTypeDesc": "BRANDY",
+  "originCode": "51",
+  "originDesc": "FRANCE",
+  "brandName": "CALVADOS MORIN",
+  "dbaName": "",
+  "fancifulName": "SÉLECTION APPLE BRANDY",
+  "alcoholContent": "Alc. 40% by volume",
+  "netContents": "750 ML",
+  "plantRegistry": "IR-NY-501",
+  "permitNumber": "IP-NY-501",
+  "applicantName": "CALVADOS MORIN",
+  "applicantAddress": "27540 IVRY-LA-BATAILLE, FRANCE",
+  "qualifications": "Appellation Calvados Contrôlée. PRODUCT OF FRANCE",
+  "labelImages": {
+    "front": "home_calvados-morin_apple-brandy_front.png",
+    "back": "home_calvados-morin_apple-brandy_back.png"
+  },
+  "wineVintage": "12/10/2025"
+}

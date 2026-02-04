@@ -1,0 +1,28 @@
+{
+  "ttbId": "24027001000310",
+  "status": "PENDING REVIEW",
+  "vendorCode": "45110",
+  "serialNumber": "24ROS1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "80A",
+  "classTypeDesc": "ROSE WINE",
+  "originCode": "05",
+  "originDesc": "VIRGINIA",
+  "brandName": "LIGHTHOUSE CELLARS",
+  "dbaName": "",
+  "fancifulName": "ROSÉ",
+  "alcoholContent": "12% ALC. BY VOL.",
+  "netContents": "750 ML",
+  "plantRegistry": "BWC-VA-1010",
+  "permitNumber": "BP-VA-1010",
+  "applicantName": "LIGHTHOUSE CELLARS",
+  "applicantAddress": "CHARLOTTESVILLE, VA",
+  "qualifications": "CONTAINS SULFITES",
+  "labelImages": {
+    "front": "wine_lighthouse-cellars_rose_front.png",
+    "back": "wine_lighthouse-cellars_rose_back.png"
+  },
+  "wineVintage": "2022",
+  "wineAppellation": "VIRGINIA",
+  "ageStatement": "01/28/2026"
+}

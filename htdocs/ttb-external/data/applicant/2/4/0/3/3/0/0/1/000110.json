@@ -1,0 +1,26 @@
+{
+  "ttbId": "24033001000110",
+  "status": "PENDING REVIEW",
+  "vendorCode": "47401",
+  "serialNumber": "24RIC1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "478",
+  "classTypeDesc": "ANISETTE",
+  "originCode": "51",
+  "originDesc": "FRANCE",
+  "brandName": "RICARD",
+  "dbaName": "PERNOD RICARD USA",
+  "fancifulName": "PASTIS DE MARSEILLE",
+  "alcoholContent": "40% alc./Vol.",
+  "netContents": "750ml",
+  "plantRegistry": "IR-NY-401",
+  "permitNumber": "IP-NY-401",
+  "applicantName": "PERNOD RICARD USA",
+  "applicantAddress": "NEW YORK, NY",
+  "qualifications": "APERITIF ANISE. NEUTRAL SPIRITS WITH NATURAL FLAVORS AND CARAMEL COLOR. PRODUCT OF FRANCE",
+  "labelImages": {
+    "front": "home_ricard_pastis_front.png",
+    "back": "home_ricard_pastis_back.png"
+  },
+  "wineVintage": "12/22/2025"
+}

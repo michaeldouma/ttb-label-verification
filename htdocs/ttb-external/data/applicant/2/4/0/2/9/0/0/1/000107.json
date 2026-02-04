@@ -1,0 +1,26 @@
+{
+  "ttbId": "24029001000107",
+  "status": "PENDING REVIEW",
+  "vendorCode": "81203",
+  "serialNumber": "24TEQ1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "943",
+  "classTypeDesc": "AGAVE SPIRITS",
+  "originCode": "81",
+  "originDesc": "MEXICO",
+  "brandName": "CASA DORADO",
+  "dbaName": "CASA DORADA IMPORTS LLC",
+  "fancifulName": "REPOSADO TEQUILA",
+  "alcoholContent": "40% ALC./VOL. (80 PROOF)",
+  "netContents": "750 ML",
+  "plantRegistry": "IR-TX-1203",
+  "permitNumber": "IP-TX-1203",
+  "applicantName": "CASA DORADA IMPORTS LLC",
+  "applicantAddress": "SAN ANTONIO, TX",
+  "qualifications": "100% DE AGAVE. HECHO EN MEXICO",
+  "labelImages": {
+    "front": "spirits_casa-dorada_tequila_front.png",
+    "back": "spirits_casa-dorada_tequila_back.png"
+  },
+  "wineVintage": "01/03/2026"
+}

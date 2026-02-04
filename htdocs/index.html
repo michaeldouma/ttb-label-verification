@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>TTB Demo — Agent View + Label Verification</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-deep: #2a2318;
+    --bg-surface: #342c1f;
+    --bg-elevated: #3e3526;
+    --border-subtle: rgba(255,217,83,0.12);
+    --border-medium: rgba(255,217,83,0.22);
+    --gold: #ffd953;
+    --gold-dim: #c4a43a;
+    --gold-glow: rgba(255,217,83,0.08);
+    --text-primary: #f0ece4;
+    --text-secondary: #9e9685;
+    --text-tertiary: #6d6458;
+    --accent-hot: #ff4d6a;
+    --panel-left-bg: #ffffff;
+    --panel-right-bg: #faf8f4;
+    --radius-panel: 10px;
+    --shadow-panel: 0 8px 40px rgba(0,0,0,0.55), 0 2px 8px rgba(0,0,0,0.3);
+    --shadow-panel-hover: 0 12px 50px rgba(0,0,0,0.6), 0 2px 10px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+
+  body {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    background: var(--bg-deep);
+    color: var(--text-primary);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Subtle texture overlay on body */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 20% 0%, rgba(255,217,83,0.03) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(255,77,106,0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── Top bar ─── */
+  .topbar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    background: var(--bg-deep);
+    border-bottom: 1px solid var(--border-subtle);
+    flex-shrink: 0;
+    min-height: 52px;
+  }
+
+  .topbar-info {
+    text-align: right;
+    line-height: 1.45;
+  }
+
+  .topbar-info .line-1 {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+  .topbar-info .line-1 strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .topbar-info .line-2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  .topbar-info .line-3 {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+  }
+
+  /* ─── Panels container ─── */
+  .panels {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    min-height: 0;
+    padding: 0 6px 6px 6px;
+    gap: 0;
+  }
+
+  /* ─── Left panel ─── */
+  .left-panel {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    min-width: 0;
+    position: relative;
+    padding: 10px 8px 8px 8px;
+  }
+
+  .left-header {
+    flex-shrink: 0;
+    padding: 0 6px 8px 6px;
+  }
+
+  .left-header-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .panel-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+
+  .pull-up-label {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .left-header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  /* Toggle group */
+  .toggle-group {
+    display: flex;
+    gap: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-deep);
+  }
+
+  .toggle-group button {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+
+  .toggle-group button:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: var(--border-subtle);
+  }
+
+  .toggle-group button.active {
+    background: var(--gold);
+    color: var(--bg-deep);
+  }
+  .toggle-group button.active::after { display: none; }
+
+  .toggle-group button:hover:not(.active) {
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+  }
+
+  /* Nav buttons */
+  .nav-group {
+    display: flex;
+    gap: 4px;
+  }
+
+  .btn-nav {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 1px solid var(--border-medium);
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 5px;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    transition: all 0.15s ease;
+  }
+
+  .btn-nav:hover {
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    border-color: var(--gold-dim);
+  }
+
+  .btn-nav.flash {
+    background: var(--gold) !important;
+    color: var(--bg-deep) !important;
+    border-color: var(--gold) !important;
+    transition: none;
+  }
+
+  /* iframes */
+  .left-panel iframe {
+    flex: 1;
+    border: none;
+    width: 100%;
+    border-radius: var(--radius-panel);
+    background: var(--panel-left-bg);
+    box-shadow: var(--shadow-panel);
+    transition: box-shadow 0.3s ease;
+  }
+
+  /* Agent badge */
+  .agent-badge {
+    position: absolute;
+    top: 200px;
+    right: 24px;
+    width: 126px;
+    height: 126px;
+    border-radius: 50%;
+    background: rgba(255,249,216,0.94);
+    color: #5a5040;
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.35;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(200,180,100,0.3);
+    z-index: 10;
+    transform: rotate(8deg);
+    pointer-events: none;
+  }
+
+  /* ─── Divider ─── */
+  .divider {
+    width: 3px;
+    background: transparent;
+    cursor: col-resize;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 5;
+  }
+  .divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 3px;
+    height: 48px;
+    border-radius: 3px;
+    background: var(--border-medium);
+    transition: all 0.2s ease;
+  }
+  .divider:hover::before, .divider.active::before {
+    background: var(--gold);
+    height: 72px;
+    box-shadow: 0 0 12px rgba(255,217,83,0.3);
+  }
+
+  /* ─── Right panel ─── */
+  .right-panel {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    padding: 10px 8px 8px 8px;
+  }
+
+  .right-header {
+    flex-shrink: 0;
+    padding: 0 6px 8px 6px;
+  }
+
+  .right-header-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .right-header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 8px;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .testbed-buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .testbed-buttons button {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 5px;
+    border: 1px solid var(--gold-dim);
+    background: var(--bg-elevated);
+    color: var(--gold);
+    transition: all 0.15s ease;
+  }
+
+  .testbed-buttons button:hover {
+    background: var(--gold);
+    color: var(--bg-deep);
+    border-color: var(--gold);
+  }
+
+  .right-header .mode-toggle {
+    display: flex;
+    gap: 0;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--border-medium);
+    background: var(--bg-deep);
+  }
+
+  .right-header .mode-toggle button {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    position: relative;
+  }
+
+  .right-header .mode-toggle button:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: var(--border-subtle);
+  }
+
+  .right-header .mode-toggle button.active {
+    background: var(--gold);
+    color: var(--bg-deep);
+  }
+  .right-header .mode-toggle button.active::after { display: none; }
+
+  .right-header .mode-toggle button:hover:not(.active) {
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+  }
+
+
+  .right-panel iframe {
+    flex: 1;
+    border: none;
+    width: 100%;
+    border-radius: var(--radius-panel);
+    background: var(--panel-right-bg);
+    box-shadow: var(--shadow-panel);
+    transition: box-shadow 0.3s ease;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- Top Bar -->
+<div class="topbar">
+  <div class="topbar-info">
+    <div class="line-1"><strong>Take-Home Project</strong> for IT Specialist Position</div>
+    <div class="line-2">AI-Powered Alcohol Label Verification App</div>
+    <div class="line-3">Michael Douma, February 2026</div>
+  </div>
+</div>
+
+<!-- Panels -->
+<div class="panels">
+  <!-- Left: Agent View -->
+  <div class="left-panel">
+    <div class="left-header">
+      <div class="left-header-top">
+        <span class="panel-title">Agent View</span>
+        <span class="pull-up-label">Pull up sample applications</span>
+      </div>
+      <div class="left-header-controls">
+        <div class="toggle-group">
+          <button class="active" onclick="setCategory(this,'wine')">Wine</button>
+          <button onclick="setCategory(this,'malt')">Malt Beverages</button>
+          <button onclick="setCategory(this,'spirits')">Distilled Spirits</button>
+        </div>
+        <div class="nav-group">
+          <button class="btn-nav" onclick="navAgent('prev')">&#9664; Prev</button>
+          <button class="btn-nav" onclick="navAgent('next')">Next &#9654;</button>
+        </div>
+      </div>
+    </div>
+    <iframe id="agentFrame" src="agent-view.html"></iframe>
+    <div class="agent-badge">Agent checks yellow fields against the label images</div>
+  </div>
+
+  <!-- Draggable Divider -->
+  <div class="divider" id="divider"></div>
+
+  <!-- Right: Verification App -->
+  <div class="right-panel">
+    <div class="right-header">
+      <div class="right-header-top">
+        <span class="panel-title">Demo App</span>
+      </div>
+      <div class="right-header-controls">
+        <div class="mode-toggle">
+          <button class="active" onclick="setMode(this,'batch')">Batch Process</button>
+          <button onclick="setMode(this,'agent')">Agent View</button>
+        </div>
+        <div class="testbed-buttons">
+          <button class="btn-clear-all" id="btnForget5" onclick="triggerForget5()">Forget 5</button>
+          <button class="btn-clear-all" id="btnForgetAll" onclick="triggerForgetAll()">Forget All</button>
+        </div>
+      </div>
+    </div>
+    <iframe id="appFrame" src="batch.html"></iframe>
+  </div>
+</div>
+
+
+<script>
+const agentFrame = document.getElementById('agentFrame');
+const appFrame = document.getElementById('appFrame');
+
+// Cache-busting helper
+function bustCache(url) {
+  const base = url.split('?')[0];
+  return base + '?t=' + Date.now();
+}
+
+// Determine category from class/type code
+function categoryForCode(code) {
+  const n = parseInt(code, 10);
+  if (n >= 80 && n <= 89) return 'wine';
+  if (n >= 900 && n <= 959) return 'malt';
+  if (n >= 100 && n <= 799) return 'spirits';
+  return 'wine'; // default
+}
+
+// Update the category toggle UI
+function setCategoryToggle(category) {
+  const toggleButtons = document.querySelectorAll('.toggle-group button');
+  toggleButtons.forEach(b => b.classList.remove('active'));
+  if (category === 'wine') toggleButtons[0]?.classList.add('active');
+  else if (category === 'malt') toggleButtons[1]?.classList.add('active');
+  else if (category === 'spirits') toggleButtons[2]?.classList.add('active');
+}
+
+// Forget All - testbed feature to reset all processing data
+function triggerForgetAll() {
+  if (!confirm('Forget all processing data? This will reset all apps to pending.')) return;
+  // Send message to batch.html to perform the forget
+  appFrame.contentWindow.postMessage({ action: 'forgetAll' }, '*');
+}
+
+// Forget 5 - testbed feature to reset 5 random apps for testing "new" queue items
+function triggerForget5() {
+  // Send message to batch.html to perform the forget
+  appFrame.contentWindow.postMessage({ action: 'forget5' }, '*');
+}
+
+// Tap icon orchestration - shows on batch.html OR agent-view.html, never both
+let tapIconTimer = null;
+
+function showTapIconOn(panel) {
+  // panel: 'batch' | 'agent' | 'none'
+  clearTimeout(tapIconTimer);
+
+  // Send to batch.html (if loaded)
+  try {
+    appFrame.contentWindow.postMessage({ action: 'showTapIcon', visible: panel === 'batch' }, '*');
+  } catch (e) {}
+
+  // Send to agent-view.html
+  try {
+    agentFrame.contentWindow.postMessage({ action: 'showTapIcon', visible: panel === 'agent' }, '*');
+  } catch (e) {}
+}
+
+async function checkInitialTapIconState() {
+  try {
+    const resp = await fetch('verification/stats.json?t=' + Date.now());
+    if (resp.ok) {
+      const stats = await resp.json();
+      const hasProcessed = (stats.summary?.totalProcessed || 0) > 0;
+      showTapIconOn(hasProcessed ? 'agent' : 'batch');
+    } else {
+      showTapIconOn('batch'); // Default to batch if no stats
+    }
+  } catch (e) {
+    showTapIconOn('batch'); // Default to batch on error
+  }
+}
+
+// App mode toggle
+let currentMode = 'batch';
+function setMode(btn, mode) {
+  document.querySelectorAll('.mode-toggle button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentMode = mode;
+  const appFrame = document.getElementById('appFrame');
+  appFrame.src = bustCache(mode === 'batch' ? 'batch.html' : 'app.html');
+  // Show/hide testbed buttons (only for batch mode)
+  document.querySelector('.testbed-buttons').style.display = mode === 'batch' ? 'flex' : 'none';
+  // Re-check tap icon state when switching modes (iframes need time to load)
+  if (mode === 'batch') {
+    setTimeout(checkInitialTapIconState, 500);
+  }
+}
+
+// Category toggle
+function setCategory(btn, category) {
+  document.querySelectorAll('.toggle-group button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  agentFrame.contentWindow.postMessage({ action: 'setCategory', category: category }, '*');
+  // Reset app.html to home state when navigating to different category
+  if (currentMode === 'agent') {
+    appFrame.src = bustCache('app.html');
+  }
+}
+
+// Navigation
+function navAgent(direction) {
+  const btn = event.currentTarget;
+  btn.classList.add('flash');
+  setTimeout(() => btn.classList.remove('flash'), 150);
+  agentFrame.contentWindow.postMessage({ action: 'navigate', direction: direction }, '*');
+  // Reset app.html to home state when navigating to different application
+  if (currentMode === 'agent') {
+    appFrame.src = bustCache('app.html');
+  }
+}
+
+// Forward messages from agent-view to app
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.action === 'switchToBatch') {
+    // Switch right panel to batch view
+    currentMode = 'batch';
+    document.querySelectorAll('.mode-toggle button').forEach(b => b.classList.remove('active'));
+    document.querySelector('.mode-toggle button:first-child').classList.add('active');
+    appFrame.src = bustCache('batch.html');
+  } else if (e.data && e.data.source === 'batch' && e.data.action === 'cleared') {
+    // Data was cleared - show tap icon on batch side
+    showTapIconOn('batch');
+  } else if (e.data && e.data.source === 'batch' && e.data.action === 'processingComplete') {
+    // Processing completed - wait 10 seconds, then show tap icon on agent side
+    showTapIconOn('none'); // Hide during delay
+    tapIconTimer = setTimeout(() => showTapIconOn('agent'), 10000);
+  } else if (e.data && e.data.source === 'batch' && e.data.action === 'openApp') {
+    // Switch right panel to agent view and navigate to the application
+    currentMode = 'agent';
+    document.querySelectorAll('.mode-toggle button').forEach(b => b.classList.remove('active'));
+    document.querySelector('.mode-toggle button:last-child').classList.add('active');
+    appFrame.src = bustCache('app.html');
+    // Update category toggle to match the application's type
+    if (e.data.classTypeCode) {
+      const category = categoryForCode(e.data.classTypeCode);
+      setCategoryToggle(category);
+      // Also update agent-view's category filter
+      agentFrame.contentWindow.postMessage({ action: 'setCategory', category }, '*');
+    }
+    // Navigate the agent-view to this application
+    agentFrame.contentWindow.postMessage({ action: 'goTo', ttbId: e.data.ttbId }, '*');
+  } else if (e.data && e.data.source === 'agent-view') {
+    // Switch to app.html if not already showing it
+    if (currentMode !== 'agent') {
+      currentMode = 'agent';
+      document.querySelectorAll('.mode-toggle button').forEach(b => b.classList.remove('active'));
+      document.querySelector('.mode-toggle button:last-child').classList.add('active');
+      appFrame.src = bustCache('app.html');
+      // Wait for iframe to load, then forward the message
+      appFrame.onload = function() {
+        appFrame.contentWindow.postMessage(e.data, '*');
+        appFrame.onload = null;
+      };
+    } else {
+      appFrame.contentWindow.postMessage(e.data, '*');
+    }
+  }
+});
+
+// Draggable divider
+const divider = document.getElementById('divider');
+const leftPanel = document.querySelector('.left-panel');
+let isDragging = false;
+
+divider.addEventListener('mousedown', (e) => {
+  isDragging = true;
+  divider.classList.add('active');
+  document.body.style.cursor = 'col-resize';
+  document.body.style.userSelect = 'none';
+  agentFrame.style.pointerEvents = 'none';
+  appFrame.style.pointerEvents = 'none';
+  e.preventDefault();
+});
+window.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
+  const container = document.querySelector('.panels');
+  const rect = container.getBoundingClientRect();
+  let pct = ((e.clientX - rect.left) / rect.width) * 100;
+  pct = Math.max(25, Math.min(75, pct));
+  leftPanel.style.width = pct + '%';
+});
+window.addEventListener('mouseup', () => {
+  if (isDragging) {
+    isDragging = false;
+    divider.classList.remove('active');
+    document.body.style.cursor = '';
+    document.body.style.userSelect = '';
+    agentFrame.style.pointerEvents = '';
+    appFrame.style.pointerEvents = '';
+  }
+});
+
+// Check initial tap icon state after iframes have loaded
+window.addEventListener('load', () => {
+  // Give iframes a moment to initialize
+  setTimeout(checkInitialTapIconState, 500);
+});
+</script>
+</body>
+</html>

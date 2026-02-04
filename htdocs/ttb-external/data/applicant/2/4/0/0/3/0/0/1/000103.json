@@ -1,0 +1,26 @@
+{
+  "ttbId": "24003001000103",
+  "status": "PENDING REVIEW",
+  "vendorCode": "22500",
+  "serialNumber": "24SRM1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "439",
+  "classTypeDesc": "RUM OTHER FLAVORED",
+  "originCode": "4A",
+  "originDesc": "PUERTO RICO",
+  "brandName": "POLLY'S",
+  "dbaName": "POLLY'S SPIRITS CO.",
+  "fancifulName": "SPICE RUM",
+  "alcoholContent": "18% ALC. BY VOL.",
+  "netContents": "1 L",
+  "plantRegistry": "DSP-XX-500",
+  "permitNumber": "DSP-XX-500",
+  "applicantName": "POLLY'S SPIRITS CO.",
+  "applicantAddress": "-",
+  "qualifications": "RUM WITH NATURAL FLAVORS",
+  "labelImages": {
+    "front": "spirits_pollys_spiced-rum_front.png",
+    "back": "spirits_pollys_spiced-rum_back.png"
+  },
+  "wineVintage": "02/01/2026"
+}

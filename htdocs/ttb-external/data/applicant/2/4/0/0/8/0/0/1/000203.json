@@ -1,0 +1,26 @@
+{
+  "ttbId": "24008001000203",
+  "status": "PENDING REVIEW",
+  "vendorCode": "31700",
+  "serialNumber": "24GRW1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "901",
+  "classTypeDesc": "BEER",
+  "originCode": "25",
+  "originDesc": "MARYLAND",
+  "brandName": "MALT & HOP BREWERY",
+  "dbaName": "",
+  "fancifulName": "NENE'S BEER (GROWLER)",
+  "alcoholContent": "(FILLED AT RETAIL)",
+  "netContents": "1 QT.",
+  "plantRegistry": "BR-MD-700",
+  "permitNumber": "BP-MD-700",
+  "applicantName": "MALT & HOP BREWERY",
+  "applicantAddress": "HYATTSVILLE, MD",
+  "qualifications": "",
+  "labelImages": {
+    "front": "malt_malt-and-hop_growler-nenes_front.png",
+    "back": "malt_malt-and-hop_growler-nenes_back.png"
+  },
+  "wineVintage": "01/11/2026"
+}

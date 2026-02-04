@@ -1,0 +1,26 @@
+{
+  "ttbId": "24028001000106",
+  "status": "PENDING REVIEW",
+  "vendorCode": "22601",
+  "serialNumber": "24BRB1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "101",
+  "classTypeDesc": "STRAIGHT BOURBON WHISKY",
+  "originCode": "22",
+  "originDesc": "KENTUCKY",
+  "brandName": "IRON RIDGE DISTILLING",
+  "dbaName": "IRON RIDGE DISTILLING CO.",
+  "fancifulName": "STRAIGHT BOURBON WHISKEY",
+  "alcoholContent": "45% ALC./VOL. (90 PROOF)",
+  "netContents": "750 ML",
+  "plantRegistry": "DSP-KY-601",
+  "permitNumber": "DSP-KY-601",
+  "applicantName": "IRON RIDGE DISTILLING CO.",
+  "applicantAddress": "LEXINGTON, KY",
+  "qualifications": "DISTILLED AND BOTTLED BY IRON RIDGE DISTILLING CO., LEXINGTON, KY",
+  "labelImages": {
+    "front": "spirits_iron-ridge_bourbon_front.png",
+    "back": "spirits_iron-ridge_bourbon_back.png"
+  },
+  "wineVintage": "01/07/2026"
+}

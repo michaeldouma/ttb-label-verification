@@ -1,0 +1,26 @@
+{
+  "ttbId": "24017001000212",
+  "status": "PENDING REVIEW",
+  "vendorCode": "39900",
+  "serialNumber": "24WNT1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "902",
+  "classTypeDesc": "ALE",
+  "originCode": "39",
+  "originDesc": "PENNSYLVANIA",
+  "brandName": "BURNETT BREW",
+  "dbaName": "E.B. BURNETT",
+  "fancifulName": "WINTER ALE",
+  "alcoholContent": "4.5% ALC/VOL",
+  "netContents": "12 FL. OZ.",
+  "plantRegistry": "BR-PA-900",
+  "permitNumber": "BP-PA-900",
+  "applicantName": "E.B. BURNETT",
+  "applicantAddress": "SLIPPERY ROCK, PA",
+  "qualifications": "BREWED AND BOTTLED BY E.B. BURNETT",
+  "labelImages": {
+    "front": "malt_burnett-brews_winter-ale_front.png",
+    "back": "malt_jrn-distillery_back.png"
+  },
+  "wineVintage": "01/22/2026"
+}

@@ -1,0 +1,26 @@
+{
+  "ttbId": "24035001000112",
+  "status": "PENDING REVIEW",
+  "vendorCode": "20001",
+  "serialNumber": "24DRO1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "200",
+  "classTypeDesc": "DISTILLED GIN",
+  "originCode": "00",
+  "originDesc": "AMERICAN",
+  "brandName": "DROP OF THE CREATOR",
+  "dbaName": "DROP OF THE CREATOR SPIRITS COMPANY",
+  "fancifulName": "GIN",
+  "alcoholContent": "40% ALC/VOL (80 PROOF)",
+  "netContents": "1 L",
+  "plantRegistry": "DSP-XX-601",
+  "permitNumber": "DSP-XX-601",
+  "applicantName": "DROP OF THE CREATOR SPIRITS COMPANY",
+  "applicantAddress": "-",
+  "qualifications": "Bottled by Tori Murphy",
+  "labelImages": {
+    "front": "spirits_drop-of-creator_gin_front.png",
+    "back": "spirits_drop-of-creator_gin_back.png"
+  },
+  "wineVintage": "01/14/2026"
+}

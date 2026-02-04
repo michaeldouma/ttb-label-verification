@@ -1,0 +1,26 @@
+{
+  "ttbId": "24016001000211",
+  "status": "PENDING REVIEW",
+  "vendorCode": "27800",
+  "serialNumber": "24CHR1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "906",
+  "classTypeDesc": "MALT BEVERAGES SPECIALITIES - FLAVORED",
+  "originCode": "27",
+  "originDesc": "MINNESOTA",
+  "brandName": "TASTY COLLECTION",
+  "dbaName": "TASTY BREWING CO.",
+  "fancifulName": "WILD CHERRY",
+  "alcoholContent": "5.5% ALC/VOL",
+  "netContents": "12 FL. OZ.",
+  "plantRegistry": "BR-MN-800",
+  "permitNumber": "BP-MN-800",
+  "applicantName": "TASTY BREWING CO.",
+  "applicantAddress": "MANKATO, MN",
+  "qualifications": "MALT BEVERAGE WITH NATURAL FLAVORS",
+  "labelImages": {
+    "front": "malt_tasty-collection_cherry_front.png",
+    "back": "malt_tasty-collection_cherry_back.png"
+  },
+  "wineVintage": "01/10/2026"
+}

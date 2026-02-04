@@ -1,0 +1,26 @@
+{
+  "ttbId": "24009001000204",
+  "status": "PENDING REVIEW",
+  "vendorCode": "45600",
+  "serialNumber": "24CRW1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "902",
+  "classTypeDesc": "ALE",
+  "originCode": "05",
+  "originDesc": "VIRGINIA",
+  "brandName": "EXAMPLE BREWING CO.",
+  "dbaName": "",
+  "fancifulName": "MILO'S ALE (CROWLER)",
+  "alcoholContent": "5% ALC/VOL",
+  "netContents": "1 QT.",
+  "plantRegistry": "BR-VA-600",
+  "permitNumber": "BP-VA-600",
+  "applicantName": "EXAMPLE BREWING COMPANY",
+  "applicantAddress": "ARLINGTON, VA",
+  "qualifications": "",
+  "labelImages": {
+    "front": "malt_example-brewing_crowler-milos-ale_front.png",
+    "back": "malt_example-brewing_crowler-milos-ale_back.png"
+  },
+  "wineVintage": "01/08/2026"
+}

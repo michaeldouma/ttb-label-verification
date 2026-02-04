@@ -1,0 +1,26 @@
+{
+  "ttbId": "24030001000213",
+  "status": "PENDING REVIEW",
+  "vendorCode": "81504",
+  "serialNumber": "24SEL1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "906",
+  "classTypeDesc": "MALT BEVERAGES SPECIALITIES - FLAVORED",
+  "originCode": "81",
+  "originDesc": "MEXICO",
+  "brandName": "BREEZY WAVE",
+  "dbaName": "BREEZE WAVE BEVERAGES",
+  "fancifulName": "MANGO HARD SELTZER",
+  "alcoholContent": "ALC. 5% BY VOL.",
+  "netContents": "12 FL. OZ.",
+  "plantRegistry": "BR-FL-504",
+  "permitNumber": "BP-FL-504",
+  "applicantName": "BREEZE WAVE BEVERAGES",
+  "applicantAddress": "MIAMI, FL",
+  "qualifications": "HECHO EN MEXICO. MALT BEVERAGE WITH NATURAL MANGO FLAVOR",
+  "labelImages": {
+    "front": "malt_breeze-wave_mango-seltzer_front.png",
+    "back": "malt_breeze-wave_mango-seltzer_back.png"
+  },
+  "wineVintage": "12/07/2025"
+}

@@ -1,0 +1,26 @@
+{
+  "ttbId": "24031001000108",
+  "status": "PENDING REVIEW",
+  "vendorCode": "47201",
+  "serialNumber": "24COI1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "472",
+  "classTypeDesc": "LIQUEURS/CORDIALS",
+  "originCode": "51",
+  "originDesc": "FRANCE",
+  "brandName": "COINTREAU",
+  "dbaName": "REMY AMERIQUE, INC.",
+  "fancifulName": "L'UNIQUE LIQUEUR",
+  "alcoholContent": "42% alc./Vol.",
+  "netContents": "750ml",
+  "plantRegistry": "IR-NY-201",
+  "permitNumber": "IP-NY-201",
+  "applicantName": "REMY AMERIQUE, INC.",
+  "applicantAddress": "NEW YORK, NY",
+  "qualifications": "IMPORTED. PRODUCT OF FRANCE",
+  "labelImages": {
+    "front": "home_cointreau_liqueur_front.png",
+    "back": "home_cointreau_liqueur_back.png"
+  },
+  "wineVintage": "12/02/2025"
+}

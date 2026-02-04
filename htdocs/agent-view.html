@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>COLA Registry — Application Detail</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Times New Roman', Times, Georgia, serif;
+    font-size: 13px;
+    color: #000;
+    background: #fff;
+  }
+  .header-bar {
+    background: #2d4a6f;
+    color: #fff;
+    padding: 6px 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-bar .logo-text { font-size: 20px; font-style: italic; font-weight: bold; }
+  .header-bar .subtitle { opacity: 0.7; }
+  .sub-bar {
+    background: #e8e8e8;
+    border-bottom: 1px solid #999;
+    padding: 3px 12px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: #333;
+    opacity: 0.4;
+  }
+  .sub-bar a { color: #000080; font-size: 11px; text-decoration: underline; margin-right: 12px; }
+  .content { padding: 10px 14px 20px; }
+  h2.page-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #00416f;
+    margin: 8px 0 4px;
+    border-bottom: 2px solid #000050;
+    padding-bottom: 4px;
+  }
+  .status-line {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: #444;
+    margin-bottom: 10px;
+  }
+  table.detail {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  table.detail th {
+    text-align: left;
+    background: #e8e8e8;
+    border: 1px solid #bbb;
+    padding: 3px 8px;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #333;
+    white-space: nowrap;
+    width: 170px;
+  }
+  table.detail td {
+    border: 1px solid #bbb;
+    padding: 3px 8px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 13px;
+  }
+  table.detail tr.verify th,
+  table.detail tr.verify td {
+    background: #fffde6;
+  }
+  table.detail tr.verify th {
+    background: #f5f0c8;
+  }
+  .section-head {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    color: #000050;
+    margin: 14px 0 4px;
+    border-bottom: 1px solid #999;
+    padding-bottom: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .label-images {
+    margin-top: 4px;
+  }
+  .label-images .label-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .label-panel {
+    border: 1px solid #bbb;
+    background: #f5f5f5;
+    padding: 8px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+  }
+  .label-panel .label-caption {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .label-panel img { max-width: 100%; max-height: 350px; border: 1px solid #ddd; }
+  .label-none {
+    color: #999;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-style: italic;
+    padding: 30px 10px;
+  }
+  .btn-ai-check {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 0.03em;
+    background: #5d70ff;
+    color: #fff;
+    border: none;
+    padding: 5px 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-ai-check:hover { background: #7a8aff; }
+  .tap-icon {
+    height: 140px;
+    position: absolute;
+    right: 10px;
+    margin-top: 4px;
+    pointer-events: none;
+    animation: bob 1.2s ease-in-out infinite;
+    display: none; /* Hidden by default, shown when labels are processed */
+  }
+  .tap-icon.visible {
+    display: block;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  .footer-bar {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    color: #888;
+    text-align: center;
+    margin-top: 16px;
+    padding: 6px 12px;
+    border-top: 1px solid #ccc;
+  }
+</style>
+</head>
+<body>
+
+<div class="header-bar">
+  <span class="logo-text">COLA Registry</span>
+</div>
+<div class="sub-bar">
+  <a href="#">My Queue</a>
+  <a href="#">Review History</a>
+  <a href="#">Guidelines</a>
+
+</div>
+
+<div class="content" id="appContent">
+  <!-- populated by JS -->
+</div>
+
+<script src="ttb-external/data/applications.js"></script>
+<script>
+const IMG_BASE = 'ttb-external/images/';
+const API_BASE = 'ttb-external/data/applicant/';
+
+// Cache for fetched application data
+const appCache = {};
+
+/**
+ * Convert TTB ID to sharded URL path
+ * TTB ID 24028001000106 -> 2/4/0/2/8/0/0/1/000106.json
+ * First 8 digits become directory levels, remainder is filename.
+ */
+function ttbIdToShardedPath(ttbId) {
+  const prefix = ttbId.substring(0, 8);
+  const remainder = ttbId.substring(8);
+  const dirPath = prefix.split('').join('/');
+  return `${dirPath}/${remainder}.json`;
+}
+
+// Category filtering by class/type code prefix
+// Wine: 80-89 range, Malt: 900-959 range, Spirits: 100-799
+function categoryForCode(code) {
+  const n = parseInt(code, 10);
+  if (isNaN(n)) return 'spirits';
+  if (n >= 80 && n <= 89) return 'wine';
+  if (n >= 900 && n <= 959) return 'malt';
+  return 'spirits';
+}
+
+// Determine if origin code indicates domestic (US state) or imported (foreign)
+// Based on TTB origin code reference:
+//   Domestic: 00-49 (US states), 4A (Puerto Rico), 4B (USVI), 4E (Alaska), 4K (DC)
+//   Foreign: 50+ (Italy=50, France=51, etc.) and letter codes except US territories
+function isImported(originCode) {
+  if (!originCode) return false;
+  const code = originCode.trim().toUpperCase();
+  // US territories/DC with letter codes
+  const usTerritories = ['4A', '4B', '4E', '4K'];
+  if (usTerritories.includes(code)) return false;
+  // Other letter codes are foreign (4H=Barbados, 4J=Kenya, etc.)
+  if (/[A-Za-z]/.test(code)) return true;
+  // Numeric codes: 00-49 = US states, 50+ = foreign countries
+  const n = parseInt(code, 10);
+  return !isNaN(n) && n >= 50;
+}
+
+// Filtered view (index only - just ttbId and classTypeCode)
+let currentCategory = 'wine';
+let filtered = [];
+let currentIndex = 0;
+let currentApp = null;  // Full app data for current selection
+
+function filterByCategory(cat) {
+  currentCategory = cat;
+  filtered = COLA_APPLICATIONS.filter(a => categoryForCode(a.classTypeCode) === cat);
+  currentIndex = 0;
+  currentApp = null;
+}
+
+// Fetch full application data from sharded JSON API
+async function fetchAppData(ttbId) {
+  if (appCache[ttbId]) {
+    return appCache[ttbId];
+  }
+  try {
+    const shardedPath = ttbIdToShardedPath(ttbId);
+    const response = await fetch(`${API_BASE}${shardedPath}`);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    appCache[ttbId] = data;
+    return data;
+  } catch (err) {
+    console.error(`Failed to fetch application ${ttbId}:`, err);
+    return null;
+  }
+}
+
+function labelImgHtml(filename, caption) {
+  if (filename) {
+    return `<img src="${IMG_BASE}${filename}" alt="${caption}">`;
+  }
+  return `<div class="label-none">[No ${caption} on file]</div>`;
+}
+
+function statusHtml(status) {
+  const colors = {
+    'PENDING REVIEW': '#b8860b',
+    'APPROVED': 'green',
+    'REJECTED': '#b22234'
+  };
+  return `<b style="color:${colors[status] || '#666'}">${status}</b>`;
+}
+
+function categoryLabel(cat) {
+  return { wine: 'Wine', malt: 'Malt Beverages', spirits: 'Distilled Spirits' }[cat] || cat;
+}
+
+async function render() {
+  const container = document.getElementById('appContent');
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <h2 class="page-title">Application Detail</h2>
+      <div class="status-line">No applications in queue for <b>${categoryLabel(currentCategory)}</b>.</div>
+    `;
+    return;
+  }
+
+  // Show loading state
+  const indexEntry = filtered[currentIndex];
+  container.innerHTML = `
+    <h2 class="page-title">Application Detail</h2>
+    <div class="status-line">Loading application ${indexEntry.ttbId}...</div>
+  `;
+
+  // Fetch full application data
+  const app = await fetchAppData(indexEntry.ttbId);
+  if (!app) {
+    container.innerHTML = `
+      <h2 class="page-title">Application Detail</h2>
+      <div class="status-line" style="color:#b22234">Error loading application ${indexEntry.ttbId}</div>
+    `;
+    return;
+  }
+
+  currentApp = app;
+  const classDisplay = app.classTypeDesc || (app.classTypeCode + ' — ' + app.fancifulName);
+  const originDisplay = app.originCode + ' — ' + app.originDesc;
+
+  container.innerHTML = `
+    <h2 class="page-title">Application Detail</h2>
+    <div class="status-line">${categoryLabel(currentCategory)} application ${currentIndex + 1} of ${filtered.length} &nbsp;|&nbsp; TTB ID: <b>${app.ttbId}</b> &nbsp;|&nbsp; Status: ${statusHtml('PENDING REVIEW')}</div>
+
+    <div class="section-head">
+      Application Information
+    </div>
+    <table class="detail">
+      <tr><th>TTB ID</th><td>${app.ttbId}</td></tr>
+      <tr><th>Status</th><td>PENDING REVIEW</td></tr>
+      <tr><th>Vendor Code</th><td>${app.vendorCode}</td></tr>
+      <tr><th>Serial Number</th><td>${app.serialNumber}</td></tr>
+      <tr><th>Type of Application</th><td>${app.appType}</td></tr>
+      <tr><th>Class/Type Code</th><td>${classDisplay}</td></tr>
+      <tr><th>Origin Code</th><td>${originDisplay}</td></tr>
+    </table>
+
+    <div class="section-head">
+      Product Information
+      <div style="position:relative">
+        <button class="btn-ai-check" onclick="sendToApp()">Verify Label Images</button>
+        <img src="images/tapIcon.png" class="tap-icon" id="tapIcon" alt="tap">
+      </div>
+    </div>
+    <table class="detail">
+      ${app.dbaName ? `<tr class="verify"><th>DBA / Trade Name</th><td>${app.dbaName}</td></tr>` : ''}
+      <tr class="verify"><th>Brand Name</th><td>${app.brandName}</td></tr>
+      ${app.fancifulName ? `<tr class="verify"><th>Fanciful Name</th><td>${app.fancifulName}</td></tr>` : ''}
+      <tr class="verify"><th>Class/Type</th><td>${app.classTypeDesc || classDisplay}</td></tr>
+      ${(categoryForCode(app.classTypeCode) !== 'malt' || app.alcoholContent) ? `<tr class="verify"><th>Alcohol Content</th><td>${app.alcoholContent || '—'}</td></tr>` : ''}
+      <tr class="verify"><th>Net Contents</th><td>${app.netContents}</td></tr>
+      ${app.wineVintage ? `<tr class="verify"><th>Vintage</th><td>${app.wineVintage}</td></tr>` : ''}
+      ${app.grapeVarietal ? `<tr class="verify"><th>Grape Varietal</th><td>${app.grapeVarietal}</td></tr>` : ''}
+      ${app.wineAppellation ? `<tr class="verify"><th>Appellation</th><td>${app.wineAppellation}</td></tr>` : ''}
+      ${categoryForCode(app.classTypeCode) === 'spirits' && app.ageStatement ? `
+      <tr class="verify"><th>Age Statement</th><td>${app.ageStatement}</td></tr>
+      ` : ''}
+      <tr class="${isImported(app.originCode) ? 'verify' : ''}"><th>Origin</th><td>${originDisplay}</td></tr>
+    </table>
+
+    <div class="section-head">
+      Applicant &amp; Permit
+    </div>
+    <table class="detail">
+      <tr><th>Plant Registry / Basic Permit</th><td>${app.plantRegistry} / ${app.permitNumber}</td></tr>
+      <tr class="verify"><th>Bottler / Producer Name</th><td>${app.applicantName}</td></tr>
+      <tr class="verify"><th>Bottler / Producer Address</th><td>${app.applicantAddress}</td></tr>
+      <tr><th>Date Received</th><td>${app.dateReceived || 'Pending'}</td></tr>
+    </table>
+
+    <div class="section-head">
+      Qualifications &amp; Label Images
+    </div>
+    <table class="detail">
+      <tr><th>Qualifications</th><td style="font-size:11px;line-height:1.5">${app.qualifications}</td></tr>
+    </table>
+    <div class="label-images">
+      <div class="label-row">
+        <div class="label-panel">
+          <div class="label-caption">Front / Brand Label</div>
+          ${labelImgHtml(app.labelImages.front, 'front label')}
+        </div>
+        <div class="label-panel">
+          <div class="label-caption">Back Label</div>
+          ${labelImgHtml(app.labelImages.back, 'back label')}
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bar">U.S. Department of the Treasury — Alcohol and Tobacco Tax and Trade Bureau</div>
+  `;
+}
+
+function sendToApp() {
+  if (!currentApp) return;
+  const app = currentApp;
+  window.parent.postMessage({
+    source: 'agent-view',
+    section: 'ai-check',
+    ttbId: app.ttbId,
+    dbaName: app.dbaName,
+    brandName: app.brandName,
+    fancifulName: app.fancifulName,
+    alcoholContent: app.alcoholContent,
+    netContents: app.netContents,
+    classTypeCode: app.classTypeCode,
+    classTypeDesc: app.classTypeDesc,
+    qualifications: app.qualifications,
+    // Wine-specific fields
+    wineVintage: app.wineVintage,
+    grapeVarietal: app.grapeVarietal,
+    wineAppellation: app.wineAppellation,
+    // Spirits-specific fields
+    ageStatement: app.ageStatement,
+    // Origin for imports
+    originCode: app.originCode,
+    originDesc: app.originDesc,
+    // Bottler/producer info
+    applicantName: app.applicantName,
+    applicantAddress: app.applicantAddress,
+    labelImages: app.labelImages
+  }, '*');
+}
+
+function navigate(direction) {
+  if (filtered.length === 0) return;
+  if (direction === 'next') {
+    currentIndex = (currentIndex + 1) % filtered.length;
+  } else if (direction === 'prev') {
+    currentIndex = (currentIndex - 1 + filtered.length) % filtered.length;
+  }
+  render();
+}
+
+async function goToApplication(ttbId) {
+  // First check if it's in the current filtered list
+  let idx = filtered.findIndex(a => a.ttbId === ttbId);
+  if (idx !== -1) {
+    currentIndex = idx;
+    await render();
+    return;
+  }
+  // If not in current category, find which category it belongs to and switch
+  const entry = COLA_APPLICATIONS.find(a => a.ttbId === ttbId);
+  if (entry) {
+    const cat = categoryForCode(entry.classTypeCode);
+    filterByCategory(cat);
+    idx = filtered.findIndex(a => a.ttbId === ttbId);
+    if (idx !== -1) {
+      currentIndex = idx;
+      await render();
+    }
+  }
+}
+
+// Listen for messages from parent
+window.addEventListener('message', (e) => {
+  if (e.data && e.data.action === 'navigate') {
+    navigate(e.data.direction);
+  } else if (e.data && e.data.action === 'goTo') {
+    goToApplication(e.data.ttbId);
+  } else if (e.data && e.data.action === 'setCategory') {
+    filterByCategory(e.data.category);
+    render();
+  } else if (e.data && e.data.action === 'showTapIcon') {
+    const tapIcon = document.getElementById('tapIcon');
+    if (tapIcon) tapIcon.classList.toggle('visible', e.data.visible);
+  }
+});
+
+// Initial: start with wine (matches the default active toggle in parent)
+filterByCategory('wine');
+render();
+</script>
+</body>
+</html>

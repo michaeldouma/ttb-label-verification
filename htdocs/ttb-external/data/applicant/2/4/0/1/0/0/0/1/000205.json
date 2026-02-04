@@ -1,0 +1,26 @@
+{
+  "ttbId": "24010001000205",
+  "status": "PENDING REVIEW",
+  "vendorCode": "45600",
+  "serialNumber": "24CRM1",
+  "appType": "LABEL APPROVAL",
+  "classTypeCode": "902",
+  "classTypeDesc": "ALE",
+  "originCode": "05",
+  "originDesc": "VIRGINIA",
+  "brandName": "EXAMPLE BREWING CO.",
+  "dbaName": "",
+  "fancifulName": "AXEL CREAM ALE",
+  "alcoholContent": "5% ALC/VOL",
+  "netContents": "15.5 GAL",
+  "plantRegistry": "BR-VA-600",
+  "permitNumber": "BP-VA-600",
+  "applicantName": "EXAMPLE BREWING CO.",
+  "applicantAddress": "ARLINGTON, VA",
+  "qualifications": "KEG LABEL",
+  "labelImages": {
+    "front": "malt_example-brewing_axel-cream-ale_front.png",
+    "back": "malt_example-brewing_axel-cream-ale_back.png"
+  },
+  "wineVintage": "01/10/2026"
+}
