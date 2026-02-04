@@ -52,23 +52,38 @@ report comparing application fields against OCR-extracted text from labels.
 
 Fields are shown with three toggle buttons: ?, ✓, ✗
 
-| Button | Meaning |
-|--------|---------|
-| ? | Needs review (initial state for AI-detected issues) |
-| ✓ | Verified OK |
-| ✗ | Issue confirmed (for applicant to fix) |
+The meaning of each button depends on whether AI auto-detected OK or flagged
+an issue:
 
-The revision notes dynamically update based on which fields are marked
-with ✗. The Copy button only appears after all fields have been reviewed
-(no ? remaining). This ensures the agent has manually verified each AI
-suggestion before copying the revision guidance.
+### Scenario 1: AI auto-detected OK
+
+AI found the requirement / values match. Default state: ✓ (trust AI's pass).
+
+| Button | Label | Color | Meaning |
+|--------|-------|-------|---------|
+| ✓ (default) | "✓ Auto-detected" | Green | Agent confirms AI was right |
+| ? | "Requirement auto-detected ok" | Grey | Agent wants to review |
+| ✗ | "✗ Override: Agent found issue" | Red | Agent overrides AI's pass |
+
+### Scenario 2: AI flagged an issue
+
+AI didn't find it / values don't match. Default state: ? (needs agent review).
+
+| Button | Label | Color | Meaning |
+|--------|-------|-------|---------|
+| ? (default) | "⚠ Agent verification needed" | Bold orange | Agent still reviewing |
+| ✓ | "✓ Agent verified" | Green | Agent overrides AI's flag (it's fine) |
+| ✗ | "✗ Agent confirmed issue" | Red | Agent confirms issue is real |
+
+### Revision notes
+
+The revision notes box appears when any field is marked ✗. The Copy button
+only appears after all fields have been reviewed (no ? remaining). This
+ensures the agent has manually verified each AI suggestion before copying
+the revision guidance.
 
 Review states are persisted in localStorage per TTB ID + field, so agents
 can navigate away and return without losing their work.
-
-**Status badges shown for each row:**
-- Mandatory elements: "Missing" when agent confirms issue
-- Field verification: "Mismatch" when agent confirms issue
 
 
 ## Verification types

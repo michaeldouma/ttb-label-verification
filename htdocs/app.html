@@ -141,6 +141,14 @@
     font-family: 'SF Mono', Monaco, 'Courier New', monospace;
     color: #64748b;
   }
+  .reset-link {
+    color: #94a3b8;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .reset-link:hover {
+    color: #64748b;
+  }
   .product-type-pill {
     display: inline-block;
     font-size: 10px;
@@ -221,7 +229,8 @@
     color: #fee2e2;
     background: rgba(255,255,255,0.1);
   }
-  .status-correct .copy-btn:hover { background: rgba(255,255,255,0.2); }
+  .status-correct .copy-btn:hover:not(:disabled) { background: rgba(255,255,255,0.2); }
+  .status-correct .copy-btn:active { background: rgba(255,255,255,0.3); }
   .status-correct .status-count { color: #fecaca; }
   .status-mixed {
     background: linear-gradient(135deg, #c2410c 0%, #ea580c 100%);
@@ -232,6 +241,16 @@
   .status-mixed .status-text h3 { color: #fff7ed; }
   .status-mixed .status-text p { color: #fed7aa; }
   .status-mixed .status-count { color: #fdba74; }
+  .status-mixed .draft-label { color: #fed7aa; }
+  .status-mixed .draft-content {
+    border-color: #fb923c;
+    background: rgba(255,255,255,0.1);
+    color: #fff7ed;
+  }
+  .status-mixed .draft-pending {
+    color: #fed7aa;
+    font-style: italic;
+  }
   .status-left {
     display: flex;
     align-items: center;
@@ -250,6 +269,11 @@
     font-size: 12px;
     font-weight: 500;
     margin-top: 2px;
+  }
+  .count-num {
+    font-size: 2em;
+    font-weight: 700;
+    vertical-align: -0.15em;
   }
 
   /* Revision notes box */
@@ -294,6 +318,20 @@
     cursor: not-allowed;
   }
   .copy-btn svg { width: 14px; height: 14px; }
+  .draft-pending {
+    font-size: 11px;
+    color: #92400e;
+    font-style: italic;
+  }
+  .field-status {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 12px;
+    color: #065f46;
+    margin-top: 6px;
+  }
+  .field-status.missing {
+    color: #b45309;
+  }
   .verify-prompt {
     font-size: 11px;
     color: #92400e;
@@ -330,7 +368,7 @@
   .section-divider {
     border: none;
     border-top: 1px solid #e2e8f0;
-    margin: 0 24px 16px;
+    margin: 0 24px 2px;
   }
   .section-title {
     font-size: 11px;
@@ -357,17 +395,24 @@
   }
   .mandatory-table th {
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    color: #64748b;
+    color: #9ca3af;
     background: #f8fafc;
     padding: 10px 12px;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
   }
-  .mandatory-table th:first-child { width: 180px; }
-  .mandatory-table th:last-child { width: 65px; text-align: center; }
+  /* Match field-table column widths for grid alignment */
+  .mandatory-table th:first-child,
+  .mandatory-table td:first-child { width: 145px; }
+  .mandatory-table th:nth-child(2),
+  .mandatory-table td:nth-child(2) { width: calc((100% - 210px) / 2); }
+  .mandatory-table th:nth-child(3),
+  .mandatory-table td:nth-child(3) { width: calc((100% - 210px) / 2); }
+  .mandatory-table th:nth-child(4),
+  .mandatory-table td:nth-child(4) { width: 65px; text-align: center; }
   .mandatory-table td {
     padding: 12px;
     border-bottom: 1px solid #f1f5f9;
@@ -378,20 +423,36 @@
   .mandatory-table tr.row-warning td { border-bottom-color: #fde68a; }
   .mandatory-table tr.row-mismatch { background: #fef2f2; }
   .mandatory-table tr.row-mismatch td { border-bottom-color: #fecaca; }
-  .mandatory-table td:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  .mandatory-table td:nth-child(2) .alert-note {
+    margin-top: 6px;
   }
-  .mandatory-table td:nth-child(2) .ocr-image {
-    align-self: flex-end;
+  .mandatory-table td:nth-child(3) {
+    text-align: left;
+  }
+  .mandatory-table td:nth-child(3) .ocr-image {
+    max-height: 48px;
+    width: auto;
+  }
+  .mandatory-table td:nth-child(3) .verify-thumb {
+    max-height: 48px;
+    width: auto;
   }
   .mandatory-status {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 12px;
     color: #065f46;
   }
   .mandatory-status.missing {
     color: #b45309;
+    font-weight: 600;
+  }
+  .mandatory-status.ai-ok,
+  .field-status.ai-ok {
+    color: #9ca3af;
+  }
+  .mandatory-status.rejected,
+  .field-status.rejected {
+    color: #dc2626;
   }
   .alert-note {
     font-size: 11px;
@@ -466,10 +527,10 @@
   }
   .field-table th {
     font-size: 10px;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    color: #64748b;
+    color: #9ca3af;
     background: #f8fafc;
     padding: 10px 12px;
     text-align: left;
@@ -478,9 +539,9 @@
   .field-table th:first-child,
   .field-table td:first-child { width: 145px; }
   .field-table th:nth-child(2),
+  .field-table td:nth-child(2) { width: calc((100% - 210px) / 2); }
   .field-table th:nth-child(3),
-  .field-table td:nth-child(2),
-  .field-table td:nth-child(3) { width: calc((100% - 195px) / 2); }
+  .field-table td:nth-child(3) { width: calc((100% - 210px) / 2); }
   .field-table th:nth-child(4),
   .field-table td:nth-child(4) { width: 65px; text-align: center; }
   .field-table td { word-wrap: break-word; overflow-wrap: break-word; }
@@ -533,6 +594,7 @@
   .ocr-cell {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 4px;
   }
   .ocr-image {
@@ -541,6 +603,7 @@
     border-radius: 4px;
     border: 1px solid #e2e8f0;
     object-fit: contain;
+    display: block;
   }
 
   .field-table td {
@@ -913,6 +976,7 @@ function getFieldConfig(category) {
 
 // Global state for current verification
 let currentAppData = null;
+let currentVerificationData = null;
 let currentChecks = [];
 
 // Issue explanation generator - returns { shortDesc, fullDesc }
@@ -1086,35 +1150,41 @@ function updateDraftBox() {
     statusBanner.className = 'status-banner status-correct';
     statusIcon.textContent = '';
     statusH3.textContent = 'Issues Identified';
-    if (statusCount) statusCount.textContent = `${totalRejectCount} item${totalRejectCount > 1 ? 's' : ''} for applicant`;
+    if (statusCount) statusCount.innerHTML = `<span class="count-num">${totalRejectCount}</span> item${totalRejectCount > 1 ? 's' : ''} for applicant`;
     if (draftBox) draftBox.style.display = 'flex';
   } else if (totalReviewingCount > 0 && totalRejectCount > 0) {
     // Mixed state - some for applicant, some still for agent to verify
     statusBanner.className = 'status-banner status-mixed';
     statusIcon.textContent = '⚠';
     statusH3.textContent = 'Verification in Progress';
-    if (statusCount) statusCount.textContent = `${totalRejectCount} for applicant; ${totalReviewingCount} for agent`;
-    if (draftBox) draftBox.style.display = 'none';
+    if (statusCount) statusCount.innerHTML = `<span class="count-num">${totalRejectCount}</span> issue${totalRejectCount > 1 ? 's' : ''} confirmed; <span class="count-num">${totalReviewingCount}</span> issue${totalReviewingCount > 1 ? 's' : ''} for agent to verify`;
+    if (draftBox) draftBox.style.display = 'flex';  // Show draft, but copy button hidden
   } else {
     // Only potential issues, agent hasn't decided yet
     statusBanner.className = 'status-banner status-fail';
     statusIcon.textContent = '⚠';
     statusH3.textContent = 'Verification in Progress';
-    if (statusCount) statusCount.textContent = `${totalReviewingCount} potential issue${totalReviewingCount > 1 ? 's' : ''} for agent to verify`;
+    if (statusCount) statusCount.innerHTML = `<span class="count-num">${totalReviewingCount}</span> potential issue${totalReviewingCount > 1 ? 's' : ''} for agent to verify`;
     if (draftBox) draftBox.style.display = 'none';
   }
 
-  // Update draft box content - only when no reviewing items remain
-  if (draftAction && draftText && totalReviewingCount === 0 && totalRejectCount > 0) {
-    draftAction.innerHTML = `
-      <button class="copy-btn" onclick="copyDraftText()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-        </svg>
-        Copy
-      </button>
-    `;
+  // Update draft box content when there are rejected items
+  if (draftAction && draftText && totalRejectCount > 0) {
+    // Show copy button only when all reviewing is complete
+    if (totalReviewingCount === 0) {
+      draftAction.innerHTML = `
+        <button class="copy-btn" onclick="copyDraftText()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          Copy
+        </button>
+      `;
+    } else {
+      // Still reviewing - hide copy button area
+      draftAction.innerHTML = '';
+    }
 
     // Build draft text from rejected fields AND mandatory elements
     const draftParts = [];
@@ -1218,8 +1288,9 @@ function renderResults(appData, extraction) {
   const container = document.getElementById('results');
   const fields = extraction.fields || {};
 
-  // Store globally for toggle handlers
+  // Store globally for toggle handlers and reset
   currentAppData = appData;
+  currentVerificationData = extraction;
 
   // Get category-specific configs
   const category = getProductCategory(appData.classTypeCode);
@@ -1366,7 +1437,7 @@ function renderResults(appData, extraction) {
           <div class="product-type-pill ${category.class}">${category.name}</div>
           <div class="origin-pill ${isImportedProduct(appData.originCode) ? 'pill-foreign' : 'pill-domestic'}">${isImportedProduct(appData.originCode) ? 'Imported' : 'Domestic'}</div>
         </div>
-        <div class="ttb-id">ID: <span>${appData.ttbId}</span></div>
+        <div class="ttb-id"><a href="#" class="reset-link" onclick="resetToAI(); return false;">↺ Reset</a> / ID: <span>${appData.ttbId}</span></div>
       </div>
       ${subName ? `<div class="brand-name">${subName}</div>` : ''}
     </div>
@@ -1378,11 +1449,11 @@ function renderResults(appData, extraction) {
   html += `
     <hr class="section-divider">
     <div class="mandatory-section">
-      <div class="section-title">Mandatory Elements</div>
       <table class="mandatory-table">
         <thead>
           <tr>
             <th>Field</th>
+            <th>Expected</th>
             <th>On Label</th>
             <th></th>
           </tr>
@@ -1403,6 +1474,48 @@ function renderResults(appData, extraction) {
       rowClass = 'row-warning';
     }
 
+    // Build requirement cell content (status + alert note)
+    let requirementContent = '';
+    if (check.detected) {
+      // Scenario 1: AI auto-detected OK
+      if (savedState === 'reviewing') {
+        requirementContent = '<span class="mandatory-status ai-ok">Requirement auto-detected ok</span>';
+      } else if (savedState === 'reject') {
+        requirementContent = '<span class="mandatory-status rejected">✗ Override: Agent found issue</span>';
+      } else {
+        requirementContent = '<span class="mandatory-status">✓ Auto-detected</span>';
+      }
+    } else {
+      // Scenario 2: AI flagged an issue
+      let statusText, statusClass;
+      if (savedState === 'ok') {
+        statusText = '✓ Agent verified';
+        statusClass = '';
+      } else if (savedState === 'reject') {
+        statusText = '✗ Agent confirmed issue';
+        statusClass = 'rejected';
+      } else {
+        statusText = '⚠ Agent verification needed';
+        statusClass = 'missing';
+      }
+      requirementContent = `<span class="mandatory-status ${statusClass}">${statusText}</span>`;
+      if (check.alertIfMissing && savedState !== 'ok') {
+        requirementContent += `<div class="alert-note">${check.alertIfMissing}</div>`;
+      }
+    }
+
+    // Build on-label cell content (image only)
+    let onLabelContent = '';
+    if (check.imageUrl) {
+      // AI extracted an image
+      onLabelContent = `<img src="${check.imageUrl}" class="ocr-image zoomable" alt="${check.label}" onclick="openLightbox(this.src)">`;
+    } else if (!check.detected && (backSrc || frontSrc)) {
+      // No extraction, show thumbnail link to full label for manual review
+      onLabelContent = `<a href="${backSrc || frontSrc || '#'}" onclick="openLightbox('${backSrc || frontSrc || ''}'); return false;">
+        <img src="${backSrc || frontSrc}" class="verify-thumb" alt="Click to verify on label">
+      </a>`;
+    }
+
     html += `
       <tr class="${rowClass}" data-field="mandatory_${check.key}">
         <td>
@@ -1415,24 +1528,8 @@ function renderResults(appData, extraction) {
             </div>
           </div>
         </td>
-        <td>
-          ${check.expectedValue ? `<div class="expected-value">Expected: "${check.expectedValue}"</div>` : ''}
-          ${check.detected
-            ? '<span class="mandatory-status">✓ Detected</span>'
-            : `<div class="manual-check-note ${savedState === 'ok' ? 'verify-ok' : (savedState === 'reject' ? 'verify-issue' : 'verify-pending')}">
-                <a href="${backSrc || frontSrc || '#'}" onclick="openLightbox('${backSrc || frontSrc || ''}'); return false;">
-                  <span class="mandatory-status missing" data-has-alert="${!!check.alertIfMissing}">${
-                    check.alertIfMissing
-                      ? (savedState === 'ok' ? '✓ Verified' : (savedState === 'reject' ? '✗ Missing from label' : '⚠ Verify'))
-                      : (savedState === 'ok' ? '✓ Verified' : (savedState === 'reject' ? '✗ Not on label' : '⚠ Agent verification needed'))
-                  }</span>
-                  ${(backSrc || frontSrc) ? `<img src="${backSrc || frontSrc}" class="verify-thumb" alt="label">` : ''}
-                </a>
-              </div>`
-          }
-          ${!check.detected && check.alertIfMissing ? `<div class="alert-note"${savedState === 'ok' ? ' style="display:none"' : ''}>${check.alertIfMissing}</div>` : ''}
-          ${check.imageUrl ? `<img src="${check.imageUrl}" class="ocr-image zoomable" alt="${check.label}" onclick="openLightbox(this.src)" style="margin-top:6px;">` : ''}
-        </td>
+        <td>${requirementContent}</td>
+        <td>${onLabelContent}</td>
         <td class="row-status ${
           !check.detected
             ? (savedState === 'reviewing' ? 'status-flagged' : (savedState === 'reject' ? 'status-rejected' : 'status-ok'))
@@ -1447,88 +1544,70 @@ function renderResults(appData, extraction) {
     `;
   }
 
-  html += `
-        </tbody>
-      </table>
-    </div>
-  `;
-
   // ─────────────────────────────────────────────────────────────────────────
-  // FIELD VERIFICATION TABLE
+  // FIELD VERIFICATION ROWS (continuing same table)
   // ─────────────────────────────────────────────────────────────────────────
-  html += `
-    <hr class="section-divider">
-    <div class="fields-section">
-      <div class="section-title">Field Verification</div>
-      <table class="field-table">
-        <thead>
-          <tr>
-            <th>Field</th>
-            <th>Declared</th>
-            <th>On Label</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-  `;
 
   for (const check of fieldChecks) {
     const ocrScore = check.ocrScore;
     const hasValidScore = typeof ocrScore === 'number' && !isNaN(ocrScore);
     const hasReliableBox = hasValidScore && ocrScore >= 0.50;  // Bounding box likely correct
-    const hasExcellentOcr = hasValidScore && ocrScore >= 0.95; // Text highly reliable
 
-    // Get saved review state from localStorage (need this before building ocrContent)
+    // Get saved review state from localStorage
     const storeKey = `review_${appData.ttbId}_${check.key}`;
     const savedState = localStorage.getItem(storeKey) || (check.match ? 'ok' : 'reviewing');
 
-    // Determine what to show in OCR column:
-    // - < 50% or missing: warning + link to full label for manual review
-    // - 50-95%: cropped image + text (verify)
-    // - >= 95%: cropped image only (reliable)
-    let ocrContent = '';
-
-    if (!hasReliableBox) {
-      // Low confidence or missing score - show manual review status with thumbnail(s)
-      // Back-label fields: bottler/importer info. Front-label fields: everything else.
-      const isBackField = ['bottlerName', 'bottlerAddress'].includes(check.key);
-      const primarySrc = isBackField ? (backSrc || frontSrc) : (frontSrc || backSrc);
-      const secondarySrc = isBackField ? frontSrc : backSrc;
-      const hasBothLabels = frontSrc && backSrc;
-
-      ocrContent += `<span class="ocr-text ${check.match ? '' : 'mismatch'}">${check.ocrValue || '—'}</span>`;
-      if (primarySrc) {
-        // Show different text based on agent's review state
-        let noteClass = 'verify-pending';
-        let noteText = '⚠ Verify';
-        if (savedState === 'ok') {
-          noteClass = 'verify-ok';
-          noteText = '✓ Verified';
-        } else if (savedState === 'reject') {
-          noteClass = 'verify-issue';
-          noteText = '✗ Issue found';
-        }
-        // Show both thumbnails if both labels exist, so agent can check either
-        let thumbsHtml = `<img src="${primarySrc}" class="verify-thumb" alt="${isBackField ? 'back' : 'front'}" onclick="event.preventDefault(); openLightbox('${primarySrc}')">`;
-        if (hasBothLabels && secondarySrc) {
-          thumbsHtml += `<img src="${secondarySrc}" class="verify-thumb" alt="${isBackField ? 'front' : 'back'}" onclick="event.preventDefault(); openLightbox('${secondarySrc}')" style="margin-left:4px;">`;
-        }
-        ocrContent += `<div class="manual-check-note ${noteClass}"><a href="${primarySrc}" onclick="openLightbox('${primarySrc}'); return false;">${noteText}</a> ${thumbsHtml}</div>`;
-      }
-    } else if (check.imageUrl) {
-      // Reliable bounding box - show cropped image
-      ocrContent += `<img src="${check.imageUrl}" class="ocr-image zoomable" alt="${check.label}" onclick="openLightbox(this.src)">`;
-      if (!hasExcellentOcr) {
-        // Medium confidence - also show text for verification
-        ocrContent += `<span class="ocr-text ${check.match ? '' : 'mismatch'}">${check.ocrValue || '—'}</span>`;
+    // Build EXPECTED column: app value + status text below
+    const appValue = check.appValue && !/^\(SEE\s+\w+\s+LABEL\)$/i.test(check.appValue) ? check.appValue : '—';
+    let statusText = '';
+    let statusClass = '';
+    if (check.match) {
+      // Scenario 1: AI auto-detected OK
+      if (savedState === 'reviewing') {
+        statusText = 'Requirement auto-detected ok';
+        statusClass = 'ai-ok';
+      } else if (savedState === 'reject') {
+        statusText = '✗ Override: Agent found issue';
+        statusClass = 'rejected';
+      } else {
+        statusText = '✓ Auto-detected';
+        statusClass = '';
       }
     } else {
-      // No image available - just show text
-      ocrContent += `<span class="ocr-text ${check.match ? '' : 'mismatch'}">${check.ocrValue || '—'}</span>`;
+      // Scenario 2: AI flagged an issue
+      if (savedState === 'ok') {
+        statusText = '✓ Agent verified';
+        statusClass = '';
+      } else if (savedState === 'reject') {
+        statusText = '✗ Agent confirmed issue';
+        statusClass = 'rejected';
+      } else {
+        statusText = '⚠ Agent verification needed';
+        statusClass = 'missing';
+      }
     }
-    // Add warning note if present (e.g., ABV format warning)
-    if (check.warning) {
-      ocrContent += `<div class="field-warning">${check.warning}</div>`;
+    const declaredContent = `${appValue}<div class="field-status ${statusClass}" data-field-key="${check.key}" data-ai-ok="${check.match}">${statusText}</div>`;
+
+    // Build ON LABEL column: image only
+    let onLabelContent = '';
+    const isBackField = ['bottlerName', 'bottlerAddress'].includes(check.key);
+    const primarySrc = isBackField ? (backSrc || frontSrc) : (frontSrc || backSrc);
+    const secondarySrc = isBackField ? frontSrc : backSrc;
+    const hasBothLabels = frontSrc && backSrc;
+
+    if (check.imageUrl) {
+      // AI extracted an image
+      onLabelContent = `<img src="${check.imageUrl}" class="ocr-image zoomable" alt="${check.label}" onclick="openLightbox(this.src)">`;
+    } else if (primarySrc) {
+      // No extraction - show thumbnail(s) for manual review
+      onLabelContent = `<a href="${primarySrc}" onclick="openLightbox('${primarySrc}'); return false;">
+        <img src="${primarySrc}" class="verify-thumb" alt="${isBackField ? 'back' : 'front'}">
+      </a>`;
+      if (hasBothLabels && secondarySrc) {
+        onLabelContent += `<a href="${secondarySrc}" onclick="openLightbox('${secondarySrc}'); return false;" style="margin-left:4px;">
+          <img src="${secondarySrc}" class="verify-thumb" alt="${isBackField ? 'front' : 'back'}">
+        </a>`;
+      }
     }
 
     // Determine row class based on saved state
@@ -1551,8 +1630,8 @@ function renderResults(appData, extraction) {
             </div>
           </div>
         </td>
-        <td class="app-value">${check.appValue && !/^\(SEE\s+\w+\s+LABEL\)$/i.test(check.appValue) ? check.appValue : '—'}</td>
-        <td><div class="ocr-cell">${ocrContent}</div></td>
+        <td class="app-value">${declaredContent}</td>
+        <td>${onLabelContent}</td>
         <td class="row-status ${
           !check.match
             ? (savedState === 'reviewing' ? 'status-flagged' : (savedState === 'reject' ? 'status-rejected' : 'status-ok'))
@@ -1636,40 +1715,67 @@ function renderResults(appData, extraction) {
         alertNote.style.display = (state === 'ok') ? 'none' : '';
       }
 
-      // Update manual-check-note based on state
-      const manualCheckNote = row.querySelector('.manual-check-note');
-      if (manualCheckNote) {
-        manualCheckNote.classList.remove('verify-pending', 'verify-ok', 'verify-issue');
-        const noteLink = manualCheckNote.querySelector('a');
-        if (noteLink) {
-          // Check if this is a mandatory element row (has mandatory-status span inside)
-          const mandatoryStatus = noteLink.querySelector('.mandatory-status.missing');
-          if (mandatoryStatus) {
-            // Mandatory element: update the span text, keep structure
-            const hasAlert = mandatoryStatus.dataset.hasAlert === 'true';
+      // Update status text based on state
+      const isMandatoryRow = field.startsWith('mandatory_');
+
+      if (isMandatoryRow) {
+        // Mandatory element: update the requirement cell (column 2)
+        const mandatoryStatus = row.querySelector('td:nth-child(2) .mandatory-status');
+        const statusCell = row.querySelector('.row-status');
+        const aiThoughtOk = statusCell && statusCell.dataset.aiFlagged === 'false';
+        if (mandatoryStatus) {
+          mandatoryStatus.classList.remove('missing', 'ai-ok', 'rejected');
+          if (aiThoughtOk) {
+            // Scenario 1: AI auto-detected OK
             if (state === 'ok') {
-              manualCheckNote.classList.add('verify-ok');
-              mandatoryStatus.textContent = '✓ Verified';
+              mandatoryStatus.textContent = '✓ Auto-detected';
             } else if (state === 'reject') {
-              manualCheckNote.classList.add('verify-issue');
-              mandatoryStatus.textContent = hasAlert ? '✗ Missing from label' : '✗ Not on label';
+              mandatoryStatus.textContent = '✗ Override: Agent found issue';
+              mandatoryStatus.classList.add('rejected');
             } else {
-              manualCheckNote.classList.add('verify-pending');
-              mandatoryStatus.textContent = hasAlert ? '⚠ Verify' : '⚠ Agent verification needed';
+              mandatoryStatus.textContent = 'Requirement auto-detected ok';
+              mandatoryStatus.classList.add('ai-ok');
             }
           } else {
-            // Field verification: replace entire link content
-            const img = noteLink.querySelector('img');
-            const imgHtml = img ? ` ${img.outerHTML}` : '';
+            // Scenario 2: AI flagged an issue
             if (state === 'ok') {
-              manualCheckNote.classList.add('verify-ok');
-              noteLink.innerHTML = `✓ Verified${imgHtml}`;
+              mandatoryStatus.textContent = '✓ Agent verified';
             } else if (state === 'reject') {
-              manualCheckNote.classList.add('verify-issue');
-              noteLink.innerHTML = `✗ Issue found${imgHtml}`;
+              mandatoryStatus.textContent = '✗ Agent confirmed issue';
+              mandatoryStatus.classList.add('rejected');
             } else {
-              manualCheckNote.classList.add('verify-pending');
-              noteLink.innerHTML = `⚠ Verify${imgHtml}`;
+              mandatoryStatus.textContent = '⚠ Agent verification needed';
+              mandatoryStatus.classList.add('missing');
+            }
+          }
+        }
+      } else {
+        // Field verification: update field-status in Declared column
+        const fieldStatus = row.querySelector('.field-status');
+        if (fieldStatus) {
+          const aiThoughtOk = fieldStatus.dataset.aiOk === 'true';
+          fieldStatus.classList.remove('missing', 'ai-ok', 'rejected');
+          if (aiThoughtOk) {
+            // Scenario 1: AI auto-detected OK
+            if (state === 'ok') {
+              fieldStatus.textContent = '✓ Auto-detected';
+            } else if (state === 'reject') {
+              fieldStatus.textContent = '✗ Override: Agent found issue';
+              fieldStatus.classList.add('rejected');
+            } else {
+              fieldStatus.textContent = 'Requirement auto-detected ok';
+              fieldStatus.classList.add('ai-ok');
+            }
+          } else {
+            // Scenario 2: AI flagged an issue
+            if (state === 'ok') {
+              fieldStatus.textContent = '✓ Agent verified';
+            } else if (state === 'reject') {
+              fieldStatus.textContent = '✗ Agent confirmed issue';
+              fieldStatus.classList.add('rejected');
+            } else {
+              fieldStatus.textContent = '⚠ Agent verification needed';
+              fieldStatus.classList.add('missing');
             }
           }
         }
@@ -1805,6 +1911,25 @@ async function initTestMode() {
   } catch (e) {
     console.error('Test mode failed:', e);
   }
+}
+
+// Reset all review states to AI defaults
+function resetToAI() {
+  if (!currentAppData) return;
+  const ttbId = currentAppData.ttbId;
+
+  // Remove all localStorage keys for this TTB ID
+  const keysToRemove = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith(`review_${ttbId}_`)) {
+      keysToRemove.push(key);
+    }
+  }
+  keysToRemove.forEach(key => localStorage.removeItem(key));
+
+  // Re-render with fresh AI defaults
+  renderResults(currentAppData, currentVerificationData);
 }
 
 // Copy draft text to clipboard
